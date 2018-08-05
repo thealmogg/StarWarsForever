@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,7 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using StarWarsForever.Core;
 using StarWarsForever.UnitOfWork;
+using StarWarsForever.UnitOfWork.Repository;
 
 namespace StarWarsForever
 {
@@ -24,6 +27,11 @@ namespace StarWarsForever
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
+            services.AddScoped<IContactRepo, ContactRepo>();
+
+            services.AddAutoMapper();
             services.AddDbContext<StarDbContext>(
                 options => options.UseSqlServer(this.Configuration.GetConnectionString("Default"))
             );
