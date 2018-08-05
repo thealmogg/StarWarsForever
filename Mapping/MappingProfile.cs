@@ -22,6 +22,7 @@ namespace StarWarsForever.Mapping
             //     }
             // });
             CreateMap<WeaponResource, Weapon>();
+            CreateMap<Image, ImageResource>();
         }
     }
 }

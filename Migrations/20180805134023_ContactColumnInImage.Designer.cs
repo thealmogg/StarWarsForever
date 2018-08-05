@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarWarsForever.UnitOfWork;
 
 namespace StarWarsForever.Migrations
 {
     [DbContext(typeof(StarDbContext))]
-    partial class StarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180805134023_ContactColumnInImage")]
+    partial class ContactColumnInImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
