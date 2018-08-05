@@ -10,7 +10,5 @@ namespace StarWarsForever.Core
          Task<IEnumerable<Contact>> GetContacts();
          void Add(Contact contact);
          void Remove(Contact contact);
-         void Update(Contact contact);
-         
     }
 }

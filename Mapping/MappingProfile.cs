@@ -21,6 +21,7 @@ namespace StarWarsForever.Mapping
             //         c.Weapons.Add(weapon);
             //     }
             // });
+            CreateMap<WeaponResource, Weapon>();
         }
     }
 }

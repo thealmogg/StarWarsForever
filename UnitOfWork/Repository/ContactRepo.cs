@@ -48,9 +48,5 @@ namespace StarWarsForever.UnitOfWork.Repository
             StarDbContext.Contacts.Remove(contact);
         }
 
-        public void Update(Contact contact)
-        {
-            StarDbContext.Contacts.Update(contact);
-        }
     }
 }

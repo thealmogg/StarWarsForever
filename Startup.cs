@@ -30,7 +30,8 @@ namespace StarWarsForever
 
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
             services.AddScoped<IContactRepo, ContactRepo>();
-
+            services.AddScoped<IWeaponRepo, WeaponRepo>();
+            // Adding the MappingProfile class as service
             services.AddAutoMapper();
             services.AddDbContext<StarDbContext>(
                 options => options.UseSqlServer(this.Configuration.GetConnectionString("Default"))
