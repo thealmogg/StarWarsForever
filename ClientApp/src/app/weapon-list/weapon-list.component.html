@@ -1,0 +1,27 @@
+<app-weapon-form *ngIf="inWeaponRoute"></app-weapon-form>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let weapon of weapons">
+    {{weapon.name}}
+    <span class="float-right">
+      <img src="../../assets/img/delete.png"
+      alt="delete" class="img-fluid btn" (click)="onWeaponChange(weapon.id)">
+      <img src="../../assets/img/edit.png"
+      alt="edit" class="img-fluid btn" [routerLink]="['/weapons', weapon.id]">
+      <!-- <img src="../../assets/img/add.png"
+      alt="add" class="img-fluid btn" (click)="onWeaponChange('add')"> -->
+    </span>
+  </li>
+</ul>
+
+<div *ngIf="weapons.length == 0">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">No Weapons Found!</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex">
+      <button class="btn btn-success mx-auto" type="button" (click)="onNewWeapon()">Create new one!</button>
+    </div>
+  </div>
+</div>

@@ -34,8 +34,15 @@ namespace StarWarsForever.UnitOfWork.Repository
             .ToListAsync();
         }
 
-        public void Add(Weapon weapon)
+        public async void Add(int contactId, Weapon weapon)
         {
+            var contact = await StarDbContext.Contacts
+            .Include(c => c.Weapons)
+            .Include(c => c.ProfileImage)
+            .SingleOrDefaultAsync(c => c.Id == contactId);
+
+            if (contact == null) return;
+
             StarDbContext.Weapons.Add(weapon);
         }
 
