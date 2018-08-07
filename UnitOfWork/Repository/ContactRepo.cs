@@ -26,7 +26,6 @@ namespace StarWarsForever.UnitOfWork.Repository
             .Include(c => c.ProfileImage)
             .SingleOrDefaultAsync(c => c.Id == id);
             }
-
             return await StarDbContext.Contacts.FindAsync(id);
         }
 
