@@ -34,7 +34,7 @@ namespace StarWarsForever.Controllers
             await unitOfWork.CompleteAsync();
 
             contact = await contactRepo.GetContact(contact.Id);
-            return Ok(mapper.Map<Contact, ContactResource>(contact));
+            return Ok(contact);
         }
 
         [HttpPut("{id}")]

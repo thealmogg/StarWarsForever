@@ -19,14 +19,12 @@ namespace StarWarsForever.Controllers
     {
         public IHostingEnvironment host { get; }
         public IContactRepo ContactRepo { get; }
-        public IImageRepo ImageRepo { get; }
         public IUnitOfWork unitOfWork { get; }
         public IMapper mapper { get; }
         private readonly ImageSettings imageSettings;
         public ProfileImagesController(IMapper mapper,
         IHostingEnvironment host,
         IContactRepo contactRepo,
-        IImageRepo imageRepo,
         IUnitOfWork unitOfWork,
         IOptionsSnapshot<ImageSettings> options)
         {
@@ -34,7 +32,6 @@ namespace StarWarsForever.Controllers
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
             this.ContactRepo = contactRepo;
-            ImageRepo = imageRepo;
             this.host = host;
 
         }
@@ -47,11 +44,11 @@ namespace StarWarsForever.Controllers
             {
                 return NotFound();
             }
+
             if(file == null) return BadRequest("Null file");
             if(file.Length == 0) return BadRequest("Empty file");
             if(file.Length > imageSettings.MaxBytes) return BadRequest("Maximum file size exceeded");
             if(!imageSettings.IsSupportedFile(file.FileName)) return BadRequest("Invalid file type");
-            
             string uploadPath = Path.Combine(host.WebRootPath, "profile-images");
             if (!Directory.Exists(uploadPath))
             {
@@ -68,16 +65,11 @@ namespace StarWarsForever.Controllers
             }
             // TODO : Create Thumbnail
 
-            var image = ImageRepo.UploadImage(contact, fileName);
+            Image image = new Image() { FileName = fileName, Contact = contact };
+            contact.ProfileImage = image;
 
-            await unitOfWork.CompleteAsync();
+            await unitOfWork.CompleteAsync(); 
             return Ok(mapper.Map<Image, ImageResource>(image));
-        }
-        [HttpGet]
-        public ImageResource GetImage(int contactId)
-        {
-            var image = ImageRepo.GetPhoto(contactId);
-            return mapper.Map<Image, ImageResource>(image);
         }
     }
 }

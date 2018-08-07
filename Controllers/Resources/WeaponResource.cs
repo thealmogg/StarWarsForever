@@ -8,6 +8,5 @@ namespace StarWarsForever.Controllers.Resources
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public int ContactId { get; set; }
     }
 }

@@ -31,8 +31,6 @@ namespace StarWarsForever
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
             services.AddScoped<IContactRepo, ContactRepo>();
             services.AddScoped<IWeaponRepo, WeaponRepo>();
-            services.AddScoped<IImageRepo, ImageRepo>();
-
             services.Configure<ImageSettings>(Configuration.GetSection("ImageSettings"));
             // Adding the MappingProfile class as service
             services.AddAutoMapper();

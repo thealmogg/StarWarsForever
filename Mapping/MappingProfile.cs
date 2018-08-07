@@ -9,9 +9,7 @@ namespace StarWarsForever.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<ContactResource, Contact>()
-            .ForMember(c => c.ProfileImage, opt => opt.Ignore())
-            .ForMember(c => c.Weapons, opt => opt.Ignore());
+            CreateMap<ContactResource, Contact>();
             // .AfterMap((cr, c) => {
             //     var removedWeapons = c.Weapons.Where(weapon => cr.Weapons.FirstOrDefault(w => w.Id == weapon.Id) == null);
             //     foreach(var weapon in removedWeapons.ToList()) {

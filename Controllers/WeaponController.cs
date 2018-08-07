@@ -21,16 +21,6 @@ namespace StarWarsForever.Controllers
             this.unitOfWork = unitOfWork;
 
         }
-        [HttpPost("{contactId}")]
-        public async Task<IActionResult> CreateWeapon(int contactId, [FromBody] WeaponResource weaponResource)
-        {
-            var weapon = await weaponRepo.GetWeapon(weaponResource.Id, includeRelated: false);
-            if(weapon != null) return BadRequest("Weapon already exist");
-
-            weaponRepo.Add(contactId, new Weapon() {Name = weaponResource.Name, ContactId = weaponResource.ContactId});
-            await unitOfWork.CompleteAsync();
-            return Ok(weaponResource);
-        }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateWeapon(int id, [FromBody] WeaponResource weaponResource)
@@ -47,6 +37,7 @@ namespace StarWarsForever.Controllers
 
             await unitOfWork.CompleteAsync();
 
+            weapon = await weaponRepo.GetWeapon(weapon.Id);
             return Ok(weapon);
         }
         [HttpDelete("{id}")]
