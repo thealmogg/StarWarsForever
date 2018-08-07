@@ -1,0 +1,22 @@
+<form [formGroup]="weaponForm" (ngSubmit)="onSubmit()">
+<div class="row mt-2 d-flex align-items-center">
+  <div class="form-group col-12 col-md-6 col-lg-4">
+      <!-- <label class="sr-only" for="weaponName">Weapon Name</label> -->
+      <input type="text"
+      class="form-control rounded-0 border border-top-0 border-left-0 border-right-0"
+      id="weaponName" placeholder="Weapon Name" formControlName="name">
+  </div>
+      <div class="form-group col-12 col-md-6 col-lg-4">
+          <ng-select class="pb-3"
+          bindLabel="name"
+          bindValue="contactname"
+          formControlName="contactId"
+          placeholder="Contact Name">
+          <ng-option *ngFor="let contact of contacts" [value]="contact.id" >{{contact.name}}</ng-option>
+        </ng-select>
+      </div>
+      <div class="form-group col-12 col-lg-3 text-center">
+          <button type="submit" [disabled]="weaponForm.invalid || weaponForm.untouched" class="btn btn-primary mb-2">Submit</button>
+      </div>
+  </div>
+</form>

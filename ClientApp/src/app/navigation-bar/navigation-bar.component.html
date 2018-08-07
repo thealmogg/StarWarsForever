@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <a class="navbar-brand" routerLink="contacts">StarWars Forever</a>
+  <button class="navbar-toggler" type="button" appCollapse="navbarMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarMenu">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" appDropdown="contactsMenu" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle">
+          Contacts
+        </a>
+        <div class="dropdown-menu" id="contactsMenu">
+          <a class="dropdown-item" routerLink="contacts">View Contacts</a>
+          <a class="dropdown-item" routerLink="contacts/new">Create New Contact</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" appDropdown="weaponsMenu" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle">
+          Weapons
+        </a>
+        <div class="dropdown-menu" id="weaponsMenu">
+          <a class="dropdown-item" routerLink="weapons">View Weapons</a>
+          <a class="dropdown-item" routerLink="weapons/new">Create New Weapon</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

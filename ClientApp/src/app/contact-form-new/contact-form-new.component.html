@@ -1,0 +1,29 @@
+<h1>New Contact</h1>
+
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" type="text" id="name" name="name" formControlName="name">
+    <div class="alert alert-danger mt-1" *ngIf="contactForm.get('name').touched && contactForm.get('name').invalid">Please specify the name.</div>
+  </div>
+  <div class="form-group">
+    <label for="last">Last Name</label>
+    <input class="form-control" type="text" id="last" name="last" formControlName="last">
+    <div class="alert alert-danger mt-1" *ngIf="contactForm.get('last').touched && contactForm.get('last').invalid">Please specify the name.</div>
+  </div>
+  <div class="form-group">
+      <label for="birthdate">Birth Date</label>
+      <input class="form-control" type="date" id="birthdate" name="birthdate" formControlName="birthdate">
+  </div>
+    <div class="form-group custom-control custom-checkbox">
+      <input type="checkbox"
+      class="custom-control-input"
+      formControlName="isdisplayed"
+      name="isdisplayed"
+      id="isdisplayed">
+      <label class="custom-control-label" for="isdisplayed">Is Displayed</label>
+    </div>
+
+  <button class="btn btn-primary" [disabled]="contactForm.invalid">Save</button>
+  <!-- <button class="btn btn-danger ml-1" type="button" *ngIf="contact.id" (click)="onDelete()">Delete</button> -->
+</form>
