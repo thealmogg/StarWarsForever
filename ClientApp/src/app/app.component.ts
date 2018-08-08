@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,11 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-
+    if (isDevMode()) {
+      console.log('👋 Development!');
+    } else {
+      console.log('💪 Production!');
+    }
   }
 
 }

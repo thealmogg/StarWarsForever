@@ -8,7 +8,6 @@ export class AppErrorHandler implements ErrorHandler {
   handleError(error: any): void {
 
     this.ngZone.run(() => {
-      console.log(error);
         this.toastyService.error({
           title: 'Error ' + error.status,
           msg: 'An Unexpected Error Occured',

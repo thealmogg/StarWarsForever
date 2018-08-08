@@ -37,7 +37,7 @@ namespace StarWarsForever
             // Adding the MappingProfile class as service
             services.AddAutoMapper();
             services.AddDbContext<StarDbContext>(
-                options => options.UseSqlServer(this.Configuration.GetConnectionString("Default"))
+                options => options.UseSqlServer(this.Configuration.GetConnectionString("Azure"))
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
             .AddJsonOptions(options => {
@@ -88,6 +88,9 @@ namespace StarWarsForever
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+                } else if (env.IsProduction()) 
+                {
+                    spa.UseAngularCliServer(npmScript: "production");
                 }
             });
         }

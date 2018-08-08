@@ -31,7 +31,6 @@ export class WeaponFormComponent implements OnInit {
     this.contactsService.getContacts().subscribe(contacts => this.contacts = contacts);
     const snapshotId = this.route.snapshot.params['id'];
     if (!isNaN(snapshotId)) {
-      console.log(snapshotId);
       this.weaponsService.getWeapon(+snapshotId).subscribe(
         weapon => {
           this.weaponForm.controls['name'].setValue(weapon.name);

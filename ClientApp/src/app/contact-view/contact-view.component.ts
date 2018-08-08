@@ -46,7 +46,6 @@ export class ContactViewComponent implements OnInit {
         this.contactForm.controls['isdisplayed'].setValue(this.contact.isDisplayed);
         this.contactForm.controls['birthdate'].setValue(this.contact.birthDate);
         this.contactIndex = this.getContactIndex();
-        console.log(this.contactIndex);
       });
   }
   userImage() {
@@ -82,7 +81,6 @@ export class ContactViewComponent implements OnInit {
     this.contact.birthDate = this.contactForm.controls['birthdate'].value;
     this.contactsService.updateContact(this.contact).subscribe(
       res => {
-        console.log(res);
         this.toasty.success({
           title: 'Success',
           msg: 'Contact Updated Successfuly',
@@ -98,7 +96,6 @@ export class ContactViewComponent implements OnInit {
 
   onChangeContact(move: string) {
     this.contactIndex = this.getContactIndex();
-    console.log(this.contactIndex);
     switch (move) {
       case 'forward':
       this.contact = this.contacts[this.contactIndex + 1];
