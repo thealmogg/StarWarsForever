@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0ca166df-34a3-4612-a0a3-9991186c0f76/resourceGroups/StarWarsForeverCBY/providers/Microsoft.Web/sites/StarWarsForever",
+    "appService.deploySubpath": ""
+}
