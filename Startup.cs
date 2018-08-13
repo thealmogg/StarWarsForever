@@ -88,9 +88,6 @@ namespace StarWarsForever
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
-                } else if (env.IsProduction()) 
-                {
-                    spa.UseAngularCliServer(npmScript: "production");
                 }
             });
         }
